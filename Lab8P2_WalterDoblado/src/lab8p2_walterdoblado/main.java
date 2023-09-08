@@ -32,7 +32,7 @@ public class main extends javax.swing.JFrame {
         initComponents();
         addpaises();
         addnadador();
-       addeventos();
+        addeventos();
     }
 
     /**
@@ -75,9 +75,8 @@ public class main extends javax.swing.JFrame {
         }
 
     }
-    
-    
-     public void addeventos() throws IOException, ClassNotFoundException {
+
+    public void addeventos() throws IOException, ClassNotFoundException {
 
         File archivo = null;
 
@@ -191,9 +190,13 @@ public class main extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jt_eventos = new javax.swing.JTable();
         jButton5 = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
+        pg_c = new javax.swing.JProgressBar();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jComboBox3 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -501,7 +504,7 @@ public class main extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("leer nadadador", jPanel5);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jt_eventos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -509,15 +512,22 @@ public class main extends javax.swing.JFrame {
                 "estilo", "distancia", "Title 3"
             }
         ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
+            };
             boolean[] canEdit = new boolean [] {
                 false, false, false
             };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(jt_eventos);
 
         jButton5.setText("actualizar");
         jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -551,18 +561,50 @@ public class main extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("leer eventos", jPanel6);
 
+        pg_c.setMaximum(50);
+        pg_c.setValue(50);
+        pg_c.setStringPainted(true);
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 775, Short.MAX_VALUE)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(91, 91, 91)
+                        .addComponent(pg_c, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(227, 227, 227)
+                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(265, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 525, Short.MAX_VALUE)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(66, 66, 66)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(123, 123, 123)
+                .addComponent(pg_c, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+                .addGap(216, 216, 216))
         );
 
-        jTabbedPane1.addTab("tab6", jPanel7);
+        jTabbedPane1.addTab("simulacion", jPanel7);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -738,7 +780,7 @@ public class main extends javax.swing.JFrame {
 
             object = new ObjectOutputStream(entrada);
 
-            Evento even = new Evento(jc_estilo2.getName(), Integer.parseInt(jc_dis2.getName()), 0);
+            Evento even = new Evento(jc_estilo2.getSelectedItem().toString(), Integer.parseInt(jc_dis2.getSelectedItem().toString()), 0);
             eventos.add(even);
 
             for (Evento ev : eventos) {
@@ -766,10 +808,10 @@ public class main extends javax.swing.JFrame {
         String paisSeleccionado = jc_paeses1.getSelectedItem().toString();
         for (Pais paise : paises) {
 
-            if (paisSeleccionado.equals(paise.getNombre())) {
-    
+            if (paise.getNombre().equals(paisSeleccionado.toString())) {
+
                 for (int i = 0; i < nadadore.size(); i++) {
-                 
+
                     String n = nadadore.get(i).getNombre().toString();
                     String na = nadadore.get(i).getNacionalida();
                     int edad = nadadore.get(i).getEdad();
@@ -778,7 +820,7 @@ public class main extends javax.swing.JFrame {
                     String dis = nadadore.get(i).getDistanciacomp();
                     int timpo = nadadore.get(i).getTiempoBest();
                     int num = nadadore.get(i).getNumMedallas();
-                  
+
                     Nadador n1 = new Nadador(n, na, edad, esta, esti, dis, timpo, num);
 
                     Object[] datos = new Object[8];
@@ -803,28 +845,31 @@ public class main extends javax.swing.JFrame {
 
     private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
         // TODO add your handling code here:
+
+        DefaultTableModel modelo2;
+        modelo2 = (DefaultTableModel) jt_eventos.getModel();
+
+      
+            System.out.println("si");
+            for (int i = 0; i < eventos.size(); i++) {
+                String n = eventos.get(i).getEstilo();
+                int n1 = eventos.get(i).getDistancia();
+                int n2 = eventos.get(i).getRecordactual();
+                System.out.println("hola");
+                Evento e = new Evento(n, n1, n2);
+
+                Object[] datos = new Object[3];
+                datos[0] = e.getEstilo();
+                datos[1] = e.getDistancia();
+                datos[2] = e.getRecordactual();
+                modelo2.addRow(datos);
+
+                jt_eventos.setModel(modelo2);
+            }
+
         
-        
-        DefaultTableModel modelo1;
-        modelo1 = (DefaultTableModel) jtable_nadador.getModel();
-        
-         for (Evento ev : eventos) {
-             
-             
-              for (int i = 0; i < eventos.size(); i++) {
-                  
-                  
-              }
-             
-         }
-        
-        
-        
-        
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_jButton5MouseClicked
 
     /**
@@ -879,6 +924,9 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -900,7 +948,6 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JComboBox<String> jc_dis;
     private javax.swing.JComboBox<String> jc_dis2;
     private javax.swing.JComboBox<String> jc_estilo;
@@ -909,15 +956,18 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jc_paeses1;
     private javax.swing.JTextField jt_edad;
     private javax.swing.JTextField jt_estatura;
+    private javax.swing.JTable jt_eventos;
     private javax.swing.JTextField jt_nacio;
     private javax.swing.JTextField jt_nombre;
     private javax.swing.JTextField jt_nombrepais;
     private javax.swing.JTextField jt_numMed;
     private javax.swing.JTextField jt_tiempo;
     private javax.swing.JTable jtable_nadador;
+    public javax.swing.JProgressBar pg_c;
     // End of variables declaration//GEN-END:variables
     int paesemeda;
     Pais p = null;
     Nadador nada1 = null;
-    Evento ev1 = null; 
+    Evento ev1 = null;
+      administrarDistancia HD;
 }

@@ -15,7 +15,15 @@ public class Evento implements Serializable{
         this.estilo = estilo;
         this.distancia = distancia;
         this.recordactual = recordactual;
+        
     }
+
+    public Evento(String estilo, int distancia) {
+        this.estilo = estilo;
+        this.distancia = distancia;
+    }
+    
+    
 
     public String getEstilo() {
         return estilo;
