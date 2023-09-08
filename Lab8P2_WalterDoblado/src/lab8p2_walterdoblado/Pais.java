@@ -51,7 +51,9 @@ public class Pais implements Serializable{
 
     @Override
     public String toString() {
-        return "Pais{" + "nombre=" + nombre + ", nadadore=" + nadadore + ", medallas=" + medallas + '}';
+        return "nombre: "+ nombre + "\n"
+                + " nadadore=" + nadadore + "\n"
+                + " medallas=" + medallas ;
     }
 
 }
