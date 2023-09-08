@@ -1,12 +1,14 @@
 package lab8p2_walterdoblado;
 
-public class Evento {
+import java.io.Serializable;
+
+public class Evento implements Serializable{
 
     private String estilo;
     private int distancia;
     private int recordactual;
 
-    public Evento() {
+    public Evento()  {
     }
 
     public Evento(String estilo, int distancia, int recordactual) {

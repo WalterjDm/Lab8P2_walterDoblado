@@ -1,6 +1,8 @@
 package lab8p2_walterdoblado;
 
-public class Nadador {
+import java.io.Serializable;
+
+public class Nadador implements Serializable{
 
     private String nombre;
     private String nacionalida;
