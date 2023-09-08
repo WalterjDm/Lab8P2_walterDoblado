@@ -4,6 +4,11 @@
  */
 package lab8p2_walterdoblado;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author walter
@@ -15,6 +20,7 @@ public class main extends javax.swing.JFrame {
      */
     public main() {
         initComponents();
+        
     }
 
     /**
@@ -67,6 +73,11 @@ public class main extends javax.swing.JFrame {
         jLabel1.setText("Nombre del pais");
 
         jButton1.setText("agregar");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -323,6 +334,37 @@ public class main extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        
+           File archivo = null;
+        FileOutputStream entrada = null;
+        ObjectOutputStream object = null;
+        
+        String j = jt_nombrepais.getText();
+        
+        archivo = new File("./PaisesParticipantes"+j);
+        
+         if (!(archivo.exists())) {
+             
+             
+             boolean fueCreado = archivo.mkdir();
+              if (fueCreado) {
+                  JOptionPane.showMessageDialog(null, "se agrego un pais");
+                  
+              }
+             
+         }
+        
+        
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
