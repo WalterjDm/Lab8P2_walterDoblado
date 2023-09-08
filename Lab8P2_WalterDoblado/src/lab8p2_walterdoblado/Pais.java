@@ -4,10 +4,53 @@
  */
 package lab8p2_walterdoblado;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author walter
  */
 public class Pais {
-    
+
+    private String nombre;
+    ArrayList<Nadador> nadadore = new ArrayList();
+    private int medallas;
+
+    public Pais() {
+    }
+
+    public Pais(String nombre, int medallas) {
+        this.nombre = nombre;
+        this.medallas = medallas;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public ArrayList<Nadador> getNadadore() {
+        return nadadore;
+    }
+
+    public void setNadadore(ArrayList<Nadador> nadadore) {
+        this.nadadore = nadadore;
+    }
+
+    public int getMedallas() {
+        return medallas;
+    }
+
+    public void setMedallas(int medallas) {
+        this.medallas = medallas;
+    }
+
+    @Override
+    public String toString() {
+        return "Pais{" + "nombre=" + nombre + ", nadadore=" + nadadore + ", medallas=" + medallas + '}';
+    }
+
 }
