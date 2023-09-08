@@ -32,9 +32,10 @@ public class main extends javax.swing.JFrame {
     /**
      * Creates new form main
      */
-    public main() {
+    public main() throws IOException, ClassNotFoundException {
         initComponents();
-        
+        addpaises();
+   
     }
 
     /**
@@ -55,13 +56,15 @@ public class main extends javax.swing.JFrame {
                  FileInputStream fi = new FileInputStream(archivo);
                 ObjectInputStream oi = new ObjectInputStream(fi);
                 
-                 Object n = oi.readObject();
+//                 Object n = oi.readObject();
+                 Object n;
+                 
               while (((n = oi.readObject()) != null)) {
           
                 if (n instanceof Pais) {
                    p = (Pais) n;
 
-                   paises.add(new Pais(p.getNombre(), p.getMedallas()));
+                   paises.add(p);
                   
                 }
 
@@ -390,7 +393,7 @@ public class main extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
-        
+        System.out.println(paises);
            File archivo = null;
         FileOutputStream entrada = null;
         ObjectOutputStream object = null;
@@ -399,7 +402,7 @@ public class main extends javax.swing.JFrame {
         
         archivo = new File("./PaisesParticipantes");
         
-         if (!(archivo.exists())) {
+//         if (!(archivo.exists())) {
              
              
     File f = new File("./PaisesParticipantes./paises.wd");
@@ -426,10 +429,10 @@ public class main extends javax.swing.JFrame {
                 }  
               
              
-         }else if (archivo.exists()) {
-            
-             JOptionPane.showMessageDialog(null, "El pais ya esta registrado");
-        }
+//         }else if (archivo.exists()) {
+//            
+//             JOptionPane.showMessageDialog(null, "El pais ya esta registrado");
+//        }
         
         
         
@@ -484,7 +487,13 @@ public class main extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new main().setVisible(true);
+                try {
+                    new main().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
