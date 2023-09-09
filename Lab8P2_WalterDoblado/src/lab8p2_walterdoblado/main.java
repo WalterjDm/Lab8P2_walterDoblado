@@ -33,6 +33,12 @@ public class main extends javax.swing.JFrame {
         addpaises();
         addnadador();
         addeventos();
+        
+        HD = new administrarDistancia(pg_t, pg_d, tp);
+        HT = new administrarTiempo(this.pg_t);
+        
+        HD2 = new administrarDistancia(pg_t1, pg_d1, tp1);
+        HT1 = new administrarTiempo(this.pg_t1);
     }
 
     /**
@@ -193,11 +199,14 @@ public class main extends javax.swing.JFrame {
         jt_eventos = new javax.swing.JTable();
         jButton5 = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
-        pg_c = new javax.swing.JProgressBar();
         jComboBox1 = new javax.swing.JComboBox<>();
         jComboBox2 = new javax.swing.JComboBox<>();
         jComboBox3 = new javax.swing.JComboBox<>();
         jButton6 = new javax.swing.JButton();
+        pg_t = new javax.swing.JProgressBar();
+        pg_d = new javax.swing.JProgressBar();
+        pg_t1 = new javax.swing.JProgressBar();
+        pg_d1 = new javax.swing.JProgressBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -562,10 +571,6 @@ public class main extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("leer eventos", jPanel6);
 
-        pg_c.setMaximum(50);
-        pg_c.setValue(50);
-        pg_c.setStringPainted(true);
-
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -579,6 +584,26 @@ public class main extends javax.swing.JFrame {
             }
         });
 
+        pg_t.setMaximum(1440);
+        pg_t.setToolTipText("");
+        pg_t.setString(Integer.toString(pg_t.getValue())+" Minutos");
+        pg_t.setStringPainted(true);
+
+        pg_d.setMaximum(1000);
+        pg_d.setToolTipText("");
+        pg_d.setString(Integer.toString(pg_d.getValue())+" Kilometros");
+        pg_d.setStringPainted(true);
+
+        pg_t1.setMaximum(1440);
+        pg_t1.setToolTipText("");
+        pg_t1.setString(Integer.toString(pg_t.getValue())+" Minutos");
+        pg_t1.setStringPainted(true);
+
+        pg_d1.setMaximum(1000);
+        pg_d1.setToolTipText("");
+        pg_d1.setString(Integer.toString(pg_d.getValue())+" Kilometros");
+        pg_d1.setStringPainted(true);
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -589,16 +614,19 @@ public class main extends javax.swing.JFrame {
                         .addGap(100, 100, 100)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(91, 91, 91)
-                        .addComponent(pg_c, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(227, 227, 227)
                         .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(265, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(pg_d, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pg_t, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pg_d1, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pg_t1, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addComponent(jButton6)
                 .addGap(176, 176, 176))
         );
@@ -611,11 +639,21 @@ public class main extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(123, 123, 123)
-                .addComponent(pg_c, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
-                .addGap(104, 104, 104)
-                .addComponent(jButton6)
-                .addGap(89, 89, 89))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton6)
+                        .addGap(89, 89, 89))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(116, 116, 116)
+                        .addComponent(pg_t, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(46, 46, 46)
+                        .addComponent(pg_d, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addComponent(pg_t1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(46, 46, 46)
+                        .addComponent(pg_d1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(60, Short.MAX_VALUE))))
         );
 
         jTabbedPane1.addTab("simulacion", jPanel7);
@@ -736,7 +774,7 @@ public class main extends javax.swing.JFrame {
           m2 = new DefaultComboBoxModel();
         for (Evento evento : eventos) {
             
-            m2.addElement(evento);
+            m2.addElement(evento.getEstilo());
             
         }
         jComboBox1.setModel(m2);
@@ -931,35 +969,41 @@ public class main extends javax.swing.JFrame {
         
         for (Evento evento : eventos) {
             
-            if (jComboBox1.getSelectedItem().toString().equals(evento)) {
+            if (jComboBox1.getSelectedItem().toString().equals(evento.getEstilo())) {
                 
-                
+                  System.out.println("no");
                 for (Nadador nadador : nadadore) {
-                    if (jComboBox2.getSelectedItem().toString().equals(nadador)) {
-                        
+                    if (jComboBox2.getSelectedItem().toString().equals(nadador.getNombre())) {
+                          System.out.println("si");
                         for(Nadador nadador1 : nadadore) {
-                        if (jComboBox3.getSelectedItem().toString().equals(nadador1)) {
+                        if (jComboBox3.getSelectedItem().toString().equals(nadador1.getNombre())) {
                             
-                            if (nadador.getDistanciacomp().equals( evento.getDistancia()) && nadador1.getDistanciacomp().equals( evento.getDistancia()) && !(nadador.getEstilo().equals(evento.getEstilo())) &&  !(nadador1.getEstilo().equals(evento.getEstilo()))) {
+//                            if (nadador.getDistanciacomp().equals( evento.getDistancia()) && nadador1.getDistanciacomp().equals( evento.getDistancia()) && (nadador.getEstilo().equals(evento.getEstilo())) &&  (nadador1.getEstilo().equals(evento.getEstilo()))) {
+//                                
+                                
+                                
+                                tp = nadador.getTiempoBest();
+                                
+                                tp1 = nadador1.getTiempoBest();
+                             
                                 
                                 
                                 
-                                
-                                
-                                  try { //por si ya esta iniciado
+                                 
           
                
-                HD.start();
-               
-                        
-        } catch (Exception e) {
-
-        }        
+                HT.start();
+               HD.start();
+                   HT1.start();
+               HD2.start();
+                          System.out.println("hola");
+            
     
-        HD.setAvanzar(true);
-                                
-                                
-                            }
+        HT.setAvanzar(true);
+                HD.setAvanzar(true);
+                       HT1.setAvanzar(true);
+                HD2.setAvanzar(true);             
+//                            }
                             
                             
                             
@@ -1089,11 +1133,20 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JTextField jt_numMed;
     private javax.swing.JTextField jt_tiempo;
     private javax.swing.JTable jtable_nadador;
-    public javax.swing.JProgressBar pg_c;
+    public javax.swing.JProgressBar pg_d;
+    public javax.swing.JProgressBar pg_d1;
+    public javax.swing.JProgressBar pg_t;
+    public javax.swing.JProgressBar pg_t1;
     // End of variables declaration//GEN-END:variables
     int paesemeda;
     Pais p = null;
     Nadador nada1 = null;
     Evento ev1 = null;
-      administrarDistancia HD;
+      
+    administrarTiempo HT;
+    administrarDistancia HD;
+       administrarTiempo HT1;
+    administrarDistancia HD2;
+      int tp ;
+         int tp1 ;
 }

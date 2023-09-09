@@ -7,12 +7,12 @@ public class administrarDistancia extends Thread {
 
     private JProgressBar progBar_t;
     private JProgressBar progBar_d;
-    private JSpinner sp_velocidad;
+    private int sp_velocidad;
     private boolean avanzar;
     private boolean vive;
 
     public administrarDistancia(JProgressBar progBar_t,
-            JProgressBar progBar_d, JSpinner sp_velocidad) {
+            JProgressBar progBar_d, int sp_velocidad) {
         this.progBar_t = progBar_t;
         this.progBar_d = progBar_d;
         this.sp_velocidad = sp_velocidad;
@@ -32,9 +32,8 @@ public class administrarDistancia extends Thread {
     public void run() {
         while (vive) {
             if (avanzar) {
-                progBar_d.setValue(Math.round(Integer.parseInt(
-                        sp_velocidad.getValue().toString())
-                        * (progBar_t.getValue() / 60))
+                progBar_d.setValue(Math.round(sp_velocidad
+                        * (progBar_t.getValue()*5))
                 );
                 progBar_d.setString(Integer.toString(
                         progBar_d.getValue()) + " Kilometros");
