@@ -33,10 +33,10 @@ public class administrarDistancia extends Thread {
         while (vive) {
             if (avanzar) {
                 progBar_d.setValue(Math.round(sp_velocidad
-                        * (progBar_t.getValue()*5))
+                        *10)
                 );
                 progBar_d.setString(Integer.toString(
-                        progBar_d.getValue()) + " Kilometros");
+                        progBar_d.getValue()) + " metros");
 
             }
             try {

@@ -36,6 +36,7 @@ public class main extends javax.swing.JFrame {
         
         HD = new administrarDistancia(pg_t, pg_d, tp);
         HT = new administrarTiempo(this.pg_t);
+       
         
         HD2 = new administrarDistancia(pg_t1, pg_d1, tp1);
         HT1 = new administrarTiempo(this.pg_t1);
@@ -242,7 +243,7 @@ public class main extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(377, 377, 377)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(238, Short.MAX_VALUE))
+                .addContainerGap(245, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -433,7 +434,7 @@ public class main extends javax.swing.JFrame {
                         .addComponent(jc_estilo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(293, Short.MAX_VALUE)
+                .addContainerGap(300, Short.MAX_VALUE)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(333, 333, 333))
         );
@@ -489,7 +490,7 @@ public class main extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 738, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(31, Short.MAX_VALUE))
+                        .addContainerGap(38, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -553,7 +554,7 @@ public class main extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 684, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton5)
@@ -577,7 +578,7 @@ public class main extends javax.swing.JFrame {
 
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jButton6.setText("jButton6");
+        jButton6.setText("comenzar");
         jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton6MouseClicked(evt);
@@ -986,9 +987,9 @@ public class main extends javax.swing.JFrame {
                                 
                                 tp1 = nadador1.getTiempoBest();
                              
+                            
                                 
-                                
-                                
+                               
                                  
           
                
@@ -1002,11 +1003,21 @@ public class main extends javax.swing.JFrame {
         HT.setAvanzar(true);
                 HD.setAvanzar(true);
                        HT1.setAvanzar(true);
-                HD2.setAvanzar(true);             
+                HD2.setAvanzar(true);
+                
+                          
 //                            }
-                            
-                            
-                            
+                     
+                     
+                            if (pg_t.getValue() ==1440) {
+                                
+                                  JOptionPane.showMessageDialog(null, "ganador"+nadador.getNombre());
+                                
+                            }else if (pg_t1.getValue() == 1440) {
+                                
+                                JOptionPane.showMessageDialog(null, "ganador"+nadador1.getNombre());
+                            }
+                         
                             
                             
                             
@@ -1147,6 +1158,7 @@ public class main extends javax.swing.JFrame {
     administrarDistancia HD;
        administrarTiempo HT1;
     administrarDistancia HD2;
+      
       int tp ;
          int tp1 ;
 }
