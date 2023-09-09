@@ -51,7 +51,7 @@ public class Evento implements Serializable{
 
     @Override
     public String toString() {
-        return "Evento{" + "estilo=" + estilo + ", distancia=" + distancia + ", recordactual=" + recordactual + '}';
+        return "estilo: "+ estilo + " distancia=" + distancia ;
     }
 
 }

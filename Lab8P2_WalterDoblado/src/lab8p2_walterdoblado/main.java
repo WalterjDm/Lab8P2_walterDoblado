@@ -197,6 +197,7 @@ public class main extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         jComboBox2 = new javax.swing.JComboBox<>();
         jComboBox3 = new javax.swing.JComboBox<>();
+        jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -571,6 +572,13 @@ public class main extends javax.swing.JFrame {
 
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        jButton6.setText("jButton6");
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -589,6 +597,10 @@ public class main extends javax.swing.JFrame {
                         .addGap(227, 227, 227)
                         .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(265, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton6)
+                .addGap(176, 176, 176))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -601,7 +613,9 @@ public class main extends javax.swing.JFrame {
                     .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(123, 123, 123)
                 .addComponent(pg_c, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
-                .addGap(216, 216, 216))
+                .addGap(104, 104, 104)
+                .addComponent(jButton6)
+                .addGap(89, 89, 89))
         );
 
         jTabbedPane1.addTab("simulacion", jPanel7);
@@ -708,6 +722,44 @@ public class main extends javax.swing.JFrame {
         jc_paeses1.setModel(modelo2);
 
 
+         DefaultComboBoxModel m2
+                = (DefaultComboBoxModel) jComboBox1.getModel();
+     DefaultComboBoxModel m3
+                = (DefaultComboBoxModel) jComboBox2.getModel();
+          DefaultComboBoxModel m4
+                = (DefaultComboBoxModel) jComboBox3.getModel();
+          
+          
+          
+          
+          
+          m2 = new DefaultComboBoxModel();
+        for (Evento evento : eventos) {
+            
+            m2.addElement(evento);
+            
+        }
+        jComboBox1.setModel(m2);
+        
+        
+        
+        m3 = new DefaultComboBoxModel();
+          for (Nadador nadador : nadadore) {
+            
+              m3.addElement(nadador.getNombre());
+              
+              
+        }
+        jComboBox2.setModel(m3);
+        
+        
+        m4 = new DefaultComboBoxModel();
+        
+        for (Nadador nadador1 : nadadore) {
+            
+            m4.addElement(nadador1.getNombre());
+        }
+       jComboBox3.setModel(m4);
     }//GEN-LAST:event_jTabbedPane1StateChanged
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
@@ -872,6 +924,79 @@ public class main extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton5MouseClicked
 
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        // TODO add your handling code here:
+        
+        
+        
+        for (Evento evento : eventos) {
+            
+            if (jComboBox1.getSelectedItem().toString().equals(evento)) {
+                
+                
+                for (Nadador nadador : nadadore) {
+                    if (jComboBox2.getSelectedItem().toString().equals(nadador)) {
+                        
+                        for(Nadador nadador1 : nadadore) {
+                        if (jComboBox3.getSelectedItem().toString().equals(nadador1)) {
+                            
+                            if (nadador.getDistanciacomp().equals( evento.getDistancia()) && nadador1.getDistanciacomp().equals( evento.getDistancia()) && !(nadador.getEstilo().equals(evento.getEstilo())) &&  !(nadador1.getEstilo().equals(evento.getEstilo()))) {
+                                
+                                
+                                
+                                
+                                
+                                  try { //por si ya esta iniciado
+          
+               
+                HD.start();
+               
+                        
+        } catch (Exception e) {
+
+        }        
+    
+        HD.setAvanzar(true);
+                                
+                                
+                            }
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        }
+                        }
+                        
+                        
+                        
+                        
+                        
+                        
+                    }
+                    
+                    
+                }
+                
+                
+                
+            }
+            
+            
+        }
+            
+       
+        
+        
+        
+        
+        
+      
+       
+    }//GEN-LAST:event_jButton6MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -924,6 +1049,7 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
