@@ -34,6 +34,9 @@ public class main extends javax.swing.JFrame {
         addnadador();
         addeventos();
         
+        pg_d.setVisible(false);
+               pg_d1.setVisible(false);
+        
         HD = new administrarDistancia(pg_t, pg_d, tp);
         HT = new administrarTiempo(this.pg_t);
        
@@ -1009,7 +1012,9 @@ public class main extends javax.swing.JFrame {
 //                            }
                      
                      
-                            if (pg_t.getValue() ==1440) {
+
+
+                            if (pg_t.getValue()==1440) {
                                 
                                   JOptionPane.showMessageDialog(null, "ganador"+nadador.getNombre());
                                 

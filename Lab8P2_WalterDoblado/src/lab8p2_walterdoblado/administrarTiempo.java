@@ -40,7 +40,7 @@ public class administrarTiempo extends Thread {
                 //activar y modificar propiedad stringPainted para que esto funciones
                 progBar.setString(Integer.toString(progBar.getValue()) );
                 
-                System.out.println(progBar.getValue());
+              
 
             }
             try {
